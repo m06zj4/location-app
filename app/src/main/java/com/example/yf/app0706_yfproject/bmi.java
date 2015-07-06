@@ -27,7 +27,7 @@ public class bmi extends ActionBarActivity {
 
 
         double result = weight / (height * height);
-        tv1.setText(String.valueOf(result));
+        tv1.setText(String.valueOf(result));// ++
 
     }
 
