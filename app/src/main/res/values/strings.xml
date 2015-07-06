@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">App0706_YFproject</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_listview">listview</string>
+    <string name="title_activity_json">json</string>
+    <string name="title_activity_bmi">bmi</string>
+    <string name="title_activity_i_beacon_accept">iBeaconAccept</string>
+    <string name="title_activity_my_dijkstra">MyDijkstra</string>
+    <string name="title_activity_my_dijksra_2">MyDijksra_2</string>
+    <string name="title_activity_async_task">AsyncTask</string>
+</resources>
