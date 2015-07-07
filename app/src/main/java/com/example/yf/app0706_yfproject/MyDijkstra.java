@@ -38,7 +38,7 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
 
 
     private BeaconManager beaconManager;
-    TextView out, jsonout, v2,test;
+    TextView out, jsonout, v2, test;
     String UUID, major, minor, classid, classname, Dist;
     Collection<Beacon> max;
     int et, op;
@@ -57,8 +57,8 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
         beaconManager.getBeaconParsers().add(new BeaconParser()
                 .setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"));     //0215為讀取iBeacon  beac為altBeacon
         beaconManager.bind(this);
-        android_id= Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-        test=(TextView)findViewById(R.id.textView6);
+        android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);//get andorid device id!!!
+        test = (TextView) findViewById(R.id.textView6);
         test.setText(android_id);
 
     }
@@ -171,6 +171,7 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
             nameValuePairs.add(new BasicNameValuePair("uuid", UUID));
             nameValuePairs.add(new BasicNameValuePair("major", major));
             nameValuePairs.add(new BasicNameValuePair("minor", minor));
+            nameValuePairs.add(new BasicNameValuePair("android_id", android_id));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,
                     HTTP.UTF_8));
 //            Log.w("mydebug", "send"+"/n"+UUID+major+minor);
