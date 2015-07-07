@@ -3,20 +3,26 @@ package com.example.yf.app0706_yfproject;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
 public class MyDijksra_2 extends ActionBarActivity {
 
     TextView tv1;
+    int enter;
+    EditText yf;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_dijksra_2);
 
         tv1 = (TextView)findViewById(R.id.tv1);
+//        yf=(EditText)findViewById(R.id.editText);//輸入終點座標用
+
     }
     public void btn1(View v){
+//        enter=Integer.parseInt(yf.getText().toString());//終點座標只能使用int 故string轉int
 
         // 建立一個權值矩陣
         int[][] L1 = { //測試數據1 無向圖 實對稱矩陣 圖3的權值矩陣
@@ -32,8 +38,8 @@ public class MyDijksra_2 extends ActionBarActivity {
                 {-1, -1, 0, -1, 10},
                 {-1, -1, 20, 0, 60,},
                 {-1, -1, -1, -1, 0}};
-//        tv1.setText(String.valueOf(dijkstra(L1, 0, 5))+ "\n"+String.valueOf(dijkstra(L2,0,4)));
-        tv1.setText(String.valueOf(dijkstra(L1, 0, 5)));
+//        tv1.setText(String.valueOf(dijkstra(L1, 0, enter)));// 使用EditText輸入終點座標
+        tv1.setText(String.valueOf(dijkstra(L1, 0, enter)));
         dijkstra(L2, 0, 4);
 //        數字+1則為圖中的數字  圖中則為-1轉換回來
         //節點v0到節點v5的短距離為：4  點1～6

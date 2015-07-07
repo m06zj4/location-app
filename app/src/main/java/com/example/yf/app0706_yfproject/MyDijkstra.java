@@ -6,6 +6,7 @@ import android.os.RemoteException;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.altbeacon.beacon.Beacon;
@@ -36,9 +37,11 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
 
 
     private BeaconManager beaconManager;
-    TextView out, jsonout,v2;
+    TextView out, jsonout, v2;
     String UUID, major, minor, classid, classname, Dist;
     Collection<Beacon> max;
+    int et, op;
+    EditText ed;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +49,8 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
         setContentView(R.layout.activity_my_dijkstra);
 //        out = (TextView) findViewById(R.id.textView2);
         jsonout = (TextView) findViewById(R.id.textView4);
-        v2 =(TextView)findViewById(R.id.textView5);
+        v2 = (TextView) findViewById(R.id.textView5);
+        ed = (EditText) findViewById(R.id.editText2);
         beaconManager = BeaconManager.getInstanceForApplication(this);
         beaconManager.getBeaconParsers().add(new BeaconParser()
                 .setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"));     //0215為讀取iBeacon  beac為altBeacon
@@ -54,7 +58,19 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
 
 
     }
-    public void btn2(View v){
+
+    public void btn2(View v) {
+        et = Integer.parseInt(ed.getText().toString());
+//
+//  if (minor == null) {
+//            try {
+//                Thread.sleep(100);
+//            } catch (InterruptedException e) {  //失敗
+//                e.printStackTrace();
+//            }
+//        }else {
+//        op = Integer.parseInt(minor);}
+
         // 建立一個權值矩陣
         int[][] L1 = { //測試數據1 無向圖 實對稱矩陣 圖3的權值矩陣
                 {0, 2, -1, 1, -1, -1},
@@ -70,12 +86,14 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
                 {-1, -1, 20, 0, 60,},
                 {-1, -1, -1, -1, 0}};
 //        tv1.setText(String.valueOf(dijkstra(L1, 0, 5))+ "\n"+String.valueOf(dijkstra(L2,0,4)));
-        v2.setText(String.valueOf(dijkstra(L1, 0, 5)));
+        v2.setText(String.valueOf(dijkstra(L1, 0, et)));
         dijkstra(L2, 0, 4);
 //        數字+1則為圖中的數字  圖中則為-1轉換回來
         //節點v0到節點v5的短距離為：4  點1～6
         // 節點v0到節點v4的短距離為：60
-    };
+    }
+
+    ;
 
 
     public void onBeaconServiceConnect() {
@@ -146,9 +164,9 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
         try {
             // Add your data
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-            nameValuePairs.add(new BasicNameValuePair("UUID", UUID));
-            nameValuePairs.add(new BasicNameValuePair("Major", major));
-            nameValuePairs.add(new BasicNameValuePair("Minor", minor));
+            nameValuePairs.add(new BasicNameValuePair("uuid", UUID));
+            nameValuePairs.add(new BasicNameValuePair("major", major));
+            nameValuePairs.add(new BasicNameValuePair("minor", minor));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,
                     HTTP.UTF_8));
 //            Log.w("mydebug", "send"+"/n"+UUID+major+minor);
@@ -173,8 +191,8 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
         try {
             JSONArray jsonArray = new JSONArray(test);
             JSONObject jsondata = jsonArray.getJSONObject(0);
-            classid = jsondata.getString("Class_id");
-            classname = jsondata.getString("Class_name");
+            classid = jsondata.getString("class_id");
+            classname = jsondata.getString("class_name");
 //            jsonout.setText(classid + classname);
         } catch (Exception e) {
         }
@@ -210,6 +228,7 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
         }
 
     }
+
     public static int dijkstra(int[][] L1, int start, int end) {
 
         boolean[] isLabel = new boolean[L1[0].length];// 是否標號
@@ -267,8 +286,6 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
     }
 
 }
-
-
 
 
 //Project下之libs新增aar檔

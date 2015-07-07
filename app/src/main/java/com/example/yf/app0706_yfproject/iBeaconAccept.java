@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.widget.TextView;
 
 import org.altbeacon.beacon.Beacon;
@@ -112,16 +113,16 @@ public class iBeaconAccept extends ActionBarActivity implements BeaconConsumer {
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost("http://120.114.138.143/compare.php");
 
-//        Log.w("mydebug1",UUID);
-//        Log.w("mydebug2",major);
-//        Log.w("mydebug3",minor);
+        Log.w("mydebug1", UUID);
+        Log.w("mydebug2",major);
+        Log.w("mydebug3",minor);
 
         try {
             // Add your data
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-            nameValuePairs.add(new BasicNameValuePair("UUID", UUID));
-            nameValuePairs.add(new BasicNameValuePair("Major", major));
-            nameValuePairs.add(new BasicNameValuePair("Minor", minor));
+            nameValuePairs.add(new BasicNameValuePair("uuid", UUID));
+            nameValuePairs.add(new BasicNameValuePair("major", major));
+            nameValuePairs.add(new BasicNameValuePair("minor", minor));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,
                     HTTP.UTF_8));
 
@@ -144,8 +145,8 @@ public class iBeaconAccept extends ActionBarActivity implements BeaconConsumer {
         try {
             JSONArray jsonArray = new JSONArray(test);
             JSONObject jsondata = jsonArray.getJSONObject(0);
-            classid = jsondata.getString("Class_id");
-            classname = jsondata.getString("Class_name");
+            classid = jsondata.getString("class_id");
+            classname = jsondata.getString("class_name");
 //            jsonout.setText(classid + classname);
         } catch (Exception e) {
         }
@@ -179,6 +180,7 @@ public class iBeaconAccept extends ActionBarActivity implements BeaconConsumer {
         protected void onPreExecute() {
             super.onPreExecute();
         }
+
 
     }
 }
