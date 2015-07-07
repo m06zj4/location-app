@@ -3,6 +3,7 @@ package com.example.yf.app0706_yfproject;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
@@ -37,11 +38,12 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
 
 
     private BeaconManager beaconManager;
-    TextView out, jsonout, v2;
+    TextView out, jsonout, v2,test;
     String UUID, major, minor, classid, classname, Dist;
     Collection<Beacon> max;
     int et, op;
     EditText ed;
+    private String android_id;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +57,9 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
         beaconManager.getBeaconParsers().add(new BeaconParser()
                 .setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"));     //0215為讀取iBeacon  beac為altBeacon
         beaconManager.bind(this);
-
+        android_id= Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+        test=(TextView)findViewById(R.id.textView6);
+        test.setText(android_id);
 
     }
 

@@ -39,4 +39,10 @@
         android:layout_toEndOf="@+id/textView4"
         android:inputType="number"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:layout_weight="0.08" />
+
 </LinearLayout>
