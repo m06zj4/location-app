@@ -111,7 +111,7 @@ public class iBeaconAccept extends ActionBarActivity implements BeaconConsumer {
     public void postData() {
         // Create a new HttpClient and Post Header
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://120.114.138.143/compare.php");
+        HttpPost httppost = new HttpPost("http://120.114.104.148/compare.php");
 
         Log.w("mydebug1", UUID);
         Log.w("mydebug2",major);

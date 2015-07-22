@@ -49,6 +49,10 @@
             android:name=".AsyncTask"
             android:label="@string/title_activity_async_task" >
         </activity>
+        <activity
+            android:name=".Dijkstra"
+            android:label="@string/title_activity_food" >
+        </activity>
     </application>
 
 </manifest>

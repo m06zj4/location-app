@@ -75,7 +75,7 @@ public class json extends ActionBarActivity {
     public void postData() {
         // Create a new HttpClient and Post Header
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://120.114.138.147:8080/api/");
+        HttpPost httppost = new HttpPost("http://120.114.104.148/compare.php");
 
         try {
             // Add your data

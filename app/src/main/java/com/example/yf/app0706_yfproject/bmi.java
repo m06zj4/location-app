@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class bmi extends ActionBarActivity {
     EditText et1, et2;
     TextView tv1;
-
+    double height,weight,result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,12 +22,24 @@ public class bmi extends ActionBarActivity {
 
     public void cal(View v) {
 
-        double height = Double.parseDouble(et1.getText().toString()) / 100;
-        double weight = Double.parseDouble(et2.getText().toString());
+        try {
+
+                height = Double.parseDouble(et1.getText().toString()) / 100;
+
+                weight = Double.parseDouble(et2.getText().toString());
 
 
-        double result = weight / (height * height);
-        tv1.setText(String.valueOf(result));// ++
+            result = weight / (height * height);
+            tv1.setText(String.valueOf(result));// ++
+        }catch (Exception e){
+            tv1.setText("輸入有錯誤");
+
+        }
+
+
+
+
+
 
     }
 

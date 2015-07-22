@@ -42,7 +42,7 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
     String UUID, major, minor, classid, classname, Dist;
     Collection<Beacon> max;
     int et, op;
-    EditText ed;
+    EditText ed,op1;
     private String android_id;
 
 
@@ -53,6 +53,7 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
         jsonout = (TextView) findViewById(R.id.textView4);
         v2 = (TextView) findViewById(R.id.textView5);
         ed = (EditText) findViewById(R.id.editText2);
+        op1=(EditText)findViewById(R.id.editText3);
         beaconManager = BeaconManager.getInstanceForApplication(this);
         beaconManager.getBeaconParsers().add(new BeaconParser()
                 .setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"));     //0215為讀取iBeacon  beac為altBeacon
@@ -65,6 +66,7 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
 
     public void btn2(View v) {
         et = Integer.parseInt(ed.getText().toString());
+        op=Integer.parseInt(op1.getText().toString());
 //
 //  if (minor == null) {
 //            try {
@@ -90,7 +92,7 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
                 {-1, -1, 20, 0, 60,},
                 {-1, -1, -1, -1, 0}};
 //        tv1.setText(String.valueOf(dijkstra(L1, 0, 5))+ "\n"+String.valueOf(dijkstra(L2,0,4)));
-        v2.setText(String.valueOf(dijkstra(L1, 0, et)));
+        v2.setText(String.valueOf(dijkstra(L1, op, et)));
         dijkstra(L2, 0, 4);
 //        數字+1則為圖中的數字  圖中則為-1轉換回來
         //節點v0到節點v5的短距離為：4  點1～6
@@ -159,7 +161,7 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
     public void postData() {
         // Create a new HttpClient and Post Header
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://120.114.138.143/compare.php");
+        HttpPost httppost = new HttpPost("http://120.114.104.148/compare.php");
 
 //        Log.w("mydebug1",UUID);
 //        Log.w("mydebug2",major);
@@ -289,6 +291,8 @@ public class MyDijkstra extends ActionBarActivity implements BeaconConsumer {
 
         return Distance[end] - Distance[start];
     }
+
+
 
 }
 
