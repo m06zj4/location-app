@@ -51,6 +51,7 @@ public class ShortestPath {
                 this.adjacent[i] = new edge();
                 this.adjacent[i].id = this.id;
                 this.adjacent[edgeNumber].weight = 0;
+
             }
         }
 
@@ -62,6 +63,7 @@ public class ShortestPath {
                 Log.e("ShortestPath", "ADJACENTEDGE ERROR");
                 Log.e("ShortestPath", "Edge " + this.id + "->" + id + " " + weight + " ");
             }
+
             this.edgeNumber++;
         }
     }
@@ -238,7 +240,7 @@ public class ShortestPath {
         }
         TextOut += "\n";
 
-        System.out.println(TextOut);
+
 
     }
 

@@ -11,4 +11,5 @@
     <string name="title_activity_my_dijksra_2">MyDijksra_2</string>
     <string name="title_activity_async_task">AsyncTask</string>
     <string name="title_activity_food">food</string>
+    <string name="title_activity_location">Location</string>
 </resources>

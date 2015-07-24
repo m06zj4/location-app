@@ -52,4 +52,8 @@ public class MainActivity extends ActionBarActivity {
         Intent intent =new Intent(this, Dijkstra.class);
         startActivity(intent);
     }
+    public void btn9(View v){
+        Intent intent =new Intent(this, Location.class);
+        startActivity(intent);
+    }
 }
