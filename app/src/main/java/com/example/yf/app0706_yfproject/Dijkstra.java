@@ -73,6 +73,7 @@ public class Dijkstra extends ActionBarActivity {
     }
 
     public void setMap(ShortestPath.vertex[] graph) {
+
         graph[0].adjacentEdge(1, 4);
 
         graph[1].adjacentEdge(0, 4);

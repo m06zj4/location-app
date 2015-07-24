@@ -85,6 +85,7 @@ public class ShortestPath {
 
         public void output() {
             TextOut += "SHORTEST DISTANCES MATRIX" + "\n";
+
             printMatrix(distMatrix);
 
         }
@@ -206,6 +207,7 @@ public class ShortestPath {
             TextOut += " " + distance[destination] + "\n";
 
 
+
         }
 
         private void printPath(int node) {
@@ -216,14 +218,14 @@ public class ShortestPath {
             } else {
                 printPath(predecessor[node]);
                 TextOut += "->" + node;
-                System.out.println(TextOut);
+
 
             }
         }
 
     }
 
-    private void printMatrix(int inDistMatrix[][]) {
+    private void printMatrix(int inDistMatrix[][]) {  //產生矩陣
         for (int i = 0; i < V; i++) {
             for (int j = 0; j < V; j++) {
                 if (inDistMatrix[i][j] == INFINITY)
@@ -236,6 +238,7 @@ public class ShortestPath {
         }
         TextOut += "\n";
 
+        System.out.println(TextOut);
 
     }
 
@@ -254,6 +257,7 @@ public class ShortestPath {
 
         if (show) {
             TextOut += "ADJACENT MATRIX" + "\n";
+
             printMatrix(adjMatrix);
 
 

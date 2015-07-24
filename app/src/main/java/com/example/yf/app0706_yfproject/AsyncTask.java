@@ -18,6 +18,8 @@ public class AsyncTask extends ActionBarActivity {
     }
 
 
+
+
     class LoadingDataAsyncTask extends android.os.AsyncTask<String, Integer, Integer> {
 
         ProgressDialog dialog;
@@ -67,6 +69,7 @@ public class AsyncTask extends ActionBarActivity {
 
 
     }
+
 
 }
 
